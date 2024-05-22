@@ -1,0 +1,62 @@
+~~~ Bash ~~~
+mkdir number_guessing_game
+cd number_guessing_game
+git init
+git checkout -b main
+touch number_guess.sh
+chmod +x number_guess.sh
+git add number_guess.sh
+git commit -m "Initial commit"
+
+git diff
+git add number_guess.sh
+git commit -m "feat: Initial outline of code written"
+git rebase --interactive HEAD~2
+
+git diff
+git add number_guess.sh
+git commit -m "feat: Random number generation done as well as Username read in"
+git log --oneline
+
+git add number_guess.sh
+git commit -m "feat: Correctly checking if username already exists and echoing appropriately if it doesn't"
+git log --oneline
+
+git diff
+git add number_guess.sh
+git commit -m "feat: Added best game initial value of 0, as well as good data, variables, and displayed message when we get an existing username"
+git log --oneline
+
+git diff
+git add number_guess.sh
+git commit -m "feat: fixed welcome msg and best game start, and added logic and msgs for playing game"
+git log --oneline
+
+git add number_guess.sh
+git commit -m "feat: fixed operators and removed tests as needed"
+
+git add number_guess.sh
+git commit -m "fix: forgot the last message for the no best game currently case"
+
+~~~ PSQL ~~~
+~~IN BASH ----> psql --username=freecodecamp --dbname=postgres
+\l
+CREATE DATABASE number_guess;
+\l
+\c number_guess
+
+CREATE TABLE user_info();
+ALTER TABLE user_info ADD COLUMN username VARCHAR(22) NOT NULL;
+ALTER TABLE user_info ADD COLUMN games_played INT;
+ALTER TABLE user_info ADD COLUMN best_game INT;
+SELECT * FROM user_info;
+UPDATE user_info SET best_game=0 WHERE username='Nick';
+UPDATE user_info SET best_game=1000 WHERE username='Nick';
+UPDATE user_info SET best_game=1000 WHERE username='John';
+
+DELETE FROM user_info WHERE username='user_1716318987028';
+DELETE FROM user_info WHERE username='user_1716318987027';
+DELETE FROM user_info WHERE username='user_1716320209603';
+DELETE FROM user_info WHERE username='user_1716320209604';
+DELETE FROM user_info WHERE username != 'Nick';
+UPDATE user_info SET best_game=1000 WHERE username='Nick';
